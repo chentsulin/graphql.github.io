@@ -23,7 +23,7 @@ var BlogSidebar = React.createClass({
               <li key={post.permalink}>
                 {post === this.props.file ?
                   post.title :
-                  <a href={post.url}>{post.title}</a>
+                  <a href={'/graphql.github.io' + post.url}>{post.title}</a>
                 }
               </li>
             )}

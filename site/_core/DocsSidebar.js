@@ -21,7 +21,7 @@ var DocsSidebar = React.createClass({
                   target={page.url.match(/^https?:/) && '_blank'}
                   style={{marginLeft: page.indent ? 20 : 0}}
                   className={page.id === this.props.page.id ? 'active' : ''}
-                  href={page.url}>
+                  href={'/graphql.github.io' + page.url}>
                   {page.title}
                 </a>
               </li>

@@ -24,8 +24,8 @@ var DocsLayout = React.createClass({
             <h1>{page.title}</h1>
             <Marked>{page.content}</Marked>
             <div className="docs-prevnext">
-              {page.previous && <a className="docs-prev" href={path.resolve(page.url, page.previous)}>&larr; Prev</a>}
-              {page.next && <a className="docs-next" href={path.resolve(page.url, page.next)}>Next &rarr;</a>}
+              {page.previous && <a className="docs-prev" href={'/graphql.github.io' + path.resolve(page.url, page.previous)}>&larr; Prev</a>}
+              {page.next && <a className="docs-next" href={'/graphql.github.io' + path.resolve(page.url, page.next)}>Next &rarr;</a>}
             </div>
           </div>
         </section>
