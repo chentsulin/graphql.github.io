@@ -26,8 +26,8 @@ var Site = React.createClass({
           <meta property="og:description" content={SiteData.description} />
 
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" />
-          <link rel="shortcut icon" href={'/img/favicon.png'} />
-          <link rel="stylesheet" href={'/css/graphql.css'} />
+          <link rel="shortcut icon" href={'/graphql.github.io/img/favicon.png'} />
+          <link rel="stylesheet" href={'/graphql.github.io/css/graphql.css'} />
 
           <script type="text/javascript" src="//use.typekit.net/vqa1hcx.js"></script>
           <script type="text/javascript">{'try{Typekit.load();}catch(e){}'}</script>
@@ -37,8 +37,8 @@ var Site = React.createClass({
           <div className="container">
             <div className="nav-main">
               <div className="wrap">
-                <a className="nav-home" href={'/'}>
-                  <img className="nav-logo" src={'/img/logo.svg'} width="40" height="40" />
+                <a className="nav-home" href={'/graphql.github.io/'}>
+                  <img className="nav-logo" src={'/graphql.github.io/img/logo.svg'} width="40" height="40" />
                   GraphQL
                 </a>
                 <HeaderLinks section={this.props.section} />

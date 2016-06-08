@@ -15,7 +15,7 @@ var BlogPost = React.createClass({
     var isPermalink = this.props.isPermalink;
     return (
       <div className="inner-content">
-        <h1>{isPermalink ? post.title : <a href={post.url}>{post.title}</a>}</h1>
+        <h1>{isPermalink ? post.title : <a href={'/graphql.github.io' + post.url}>{post.title}</a>}</h1>
         <p>{new Date(post.date).toLocaleDateString()} by {post.byline}</p>
         {post.guestBio ? null : <hr />}
         {post.guestBio && <p className="guestBio">{
