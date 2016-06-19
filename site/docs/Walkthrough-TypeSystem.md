@@ -6,11 +6,11 @@ permalink: /docs/typesystem/
 next: /docs/queries/
 ---
 
-在任何位於 GraphQL 的實作中，是什麼樣的物件類型可以回傳說明，描述在一個 GraphQL 類型系統並回傳在 GraphQL 的 Schema。
+任何位於 GraphQL 的實作中，是什麼樣的物件類型可以透過回傳說明，描述在一個 GraphQL 類型系統並回傳在 GraphQL 的 Schema。
 
 例如我們的 Star Wars 範例，[starWarsSchema.js](https://github.com/graphql/graphql-js/blob/master/src/__tests__/starWarsSchema.js) 檔案在 GraphQL.js 定義這個類型系統。
 
-在系統中最基本的類型是 `Human`，用來表達像是 Like、Leia 和 Han 的角色。所有人類在我們的類型系統會有個 name，所以我們定義在 `Human` 類型定義一個欄位叫做「name」。這裡會回傳一個 String，我們可以知道它不是 null（因為所有 `Human` 都有一個 name），所我們將會定義「name」欄位為一個不為空的 String。使用一個速記符號，我們將使用整個規範和文件，描述 human 的類型像是：
+在系統中最基本的類型是 `Human`，用來表達像是 Like、Leia 和 Han 的角色。所有人類在我們的類型系統會有個 name，所以我們定義在 `Human` 類型定義一個欄位叫做「name」。這裡會回傳一個 String，我們可以知道它不是 null（因為所有 `Human` 都有一個 name），所我們將會定義「name」欄位為一個不為空的 String。我們將使用簡寫來表示整個規範和文件，描述 human 的類型像是：
 
 ```
 type Human {
@@ -18,7 +18,7 @@ type Human {
 }
 ```
 
-這個速記是方便描述一個類型系統的基本型態；JavaScript 執行更全面的功能，並允許類型和欄位可以被記錄。它也在類型系統和底層資料之間設定了 map；在 GraphQL.js 的測試案例中，底層的資料是一組 [JavaScript 的物件](https://github.com/graphql/graphql-js/blob/master/src/__tests__/starWarsData.js)，但在大多數的情況下，後端的資料會透過一些服務來做存取，這個類型系統層會負責從類型和欄位的 map 到該服務。
+這個簡寫是方便描述一個類型系統的基本型態；JavaScript 執行更全面的功能，並允許類型和欄位可以被記錄。它也在類型系統和底層資料之間設定了 map；在 GraphQL.js 的測試案例中，底層的資料是一組 [JavaScript 的物件](https://github.com/graphql/graphql-js/blob/master/src/__tests__/starWarsData.js)，但在大多數的情況下，後端的資料會透過一些服務來做存取，這個類型系統層會負責從類型和欄位的 map 到該服務。
 
 在許多 APIs 有一個常見的模式，事實上，在 GraphQL 是給予物件一個 ID 可以重新用來取得物件。以讓我們來新增我們的 Human 類型。我們也會為 homePlanet 加入一個字串。
 
@@ -92,7 +92,7 @@ type Droid : Character {
 }
 ```
 
-有一個問題我們可能會詢問，那就是任何的欄位是否會回傳 `null`。預設情況下，在 GraphQL 對於任何的 type，`null` 是一個合法的值，從取得資料到履行，一個 GraphQL 查詢經常需要與不同的服務溝通，這可能可以使用也可能無法使用。然而，如果類型系統可以保證類型永遠不會是 null，然後我們可以在類型系統標記為非 Null。我們透過宣告在我們的速記類型後面加入一個「!」。我們可以更新我們的類型系統來提醒 `id` 永遠不為 null。
+有一個問題我們可能會詢問，那就是任何的欄位是否會回傳 `null`。預設情況下，在 GraphQL 對於任何的 type，`null` 是一個合法的值，從取得資料到履行，一個 GraphQL 查詢經常需要與不同的服務溝通，這可能可以使用也可能無法使用。然而，如果類型系統可以保證類型永遠不會是 null，然後我們可以在類型系統標記為非 Null。我們透過宣告在我們的簡寫類型後面加入一個「!」。我們可以更新我們的類型系統來提醒 `id` 永遠不為 null。
 
 請注意我們目前的實作，我們可以保證許多欄位不為 null（因為我們目前實作具有 hard-coded data），我們不需要標記它們為非 null。你可以想像一個後端服務最終會取代我們的 hardcoded data，這可能不是相當可靠的；通過將這些欄位為空，允許我們最終回傳的 null 可以更有彈性來宣告後端的錯誤，同時也告訴客戶端發生了錯誤。
 
