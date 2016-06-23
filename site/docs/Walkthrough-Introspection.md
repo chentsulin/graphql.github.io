@@ -6,20 +6,11 @@ permalink: /docs/introspection/
 next: /docs/api-reference-graphql/
 ---
 
-It's often useful to ask a GraphQL schema for information about what
-queries it supports. GraphQL allows us to do so using the introspection
-system!
+關於查詢的資料是否支援，可以對 GraphQL schema 請求資訊，是相當有用的。GraphQL 允許我們這樣使用自我檢查系統！
 
-For our Star Wars example, the file
-[starWarsIntrospection-test.js](https://github.com/graphql/graphql-js/blob/master/src/__tests__/starWarsIntrospection-test.js)
-contains a number of queries demonstrating the introspection system, and is a
-test file that can be run to exercise the reference implementation's
-introspection system.
+在我們的 Star Wars 範例中，[starWarsIntrospection-test.js](https://github.com/graphql/graphql-js/blob/master/src/__tests__/starWarsIntrospection-test.js) 檔案包含一些查詢的展示和自我檢查系統，測試檔案可以執行參考實作的自我檢查系統。
 
-We designed the type system, so we know what types are available, but if
-we didn't, we can ask GraphQL, by querying the `__schema` field, always
-available on the root type of a Query. Let's do so now, and ask what types
-are available.
+我們設計類型系統，所以我們知道類型是可用的，如果我們沒這麼做的話，我們可以請求 GraphQL，透過查詢 `__schema` ，在一個 Query 的 root 類型總是可以使用。
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -42,19 +33,14 @@ are available.
 `} />);
 </script>
 
-Wow, that's a lot of types! What are they? Let's group them:
+哇！有好多種類型！它們是哪一種？讓我們來分類它們：
 
- - **Query, Character, Human, Episode, Droid** - These are the ones that we
-defined in our type system.
- - **String, Boolean** - These are built-in scalars that the type system
-provided.
+ - **Query, Character, Human, Episode, Droid** - 這些是我們定義在我們的類型系統之一。
+ - **String, Boolean** - 這些是類型系統提供的內建 scalar。
  - **__Schema, __Type, __TypeKind, __Field, __InputValue, __EnumValue,
-__Directive** - These all are preceded with a double underscore, indicating
-that they are part of the introspection system.
+__Directive** - 這些前面帶有雙底線的，宣告它們是自我檢查系統的一部份。
 
-Now, let's try and figure out a good place to start exploring what queries are
-available. When we designed out type system, we specified what type all queries
-would start at; let's ask the introspection system about that!
+現在，讓我們嘗找出一個好的地方來探索那些查詢是可用的。當我們設計出類型系統，我們指定何種類型的所有查詢都將開始；讓我們詢問自我檢查系統吧！
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -70,15 +56,9 @@ would start at; let's ask the introspection system about that!
 `} />);
 </script>
 
-And that matches what we said in the type system section, that
-the `Query` type is where we will start! Note that the naming here
-was just by convention; we could have named our `Query` type anything
-else, and it still would have been returned here had we specified it
-was the starting type for queries. Naming it `Query`, though, is a useful
-convention.
+配合我們在類型系統部份說的，我們從 `Query` 類型開始！注意在這裡的命名只是慣例；我們可以命名任何我們的 `Query` 類型，它仍然回傳在這裡我們指定查詢的起始類型。命名 `Query` 是一個有用的習慣。
 
-It is often useful to examine one specific type. Let's take a look at
-the `Droid` type:
+它在檢查一個指定的類型是相當有用的。讓我們看一下 `Droid` 類型：
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -92,8 +72,7 @@ the `Droid` type:
 `} />);
 </script>
 
-What if we want to know more about Droid, though? For example, is it
-an interface or an object?
+如果我們想知道更多關於 Droid，例如，它是一個介面或物件？
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -108,8 +87,7 @@ an interface or an object?
 `} />);
 </script>
 
-`kind` returns a `__TypeKind` enum, one of whose values is `OBJECT`. If
-we asked about `Character` instead we'd find that it is an interface:
+`kind` 回傳一個 `__TypeKind` enum，其中一個值是 `OBJECT`。如果我們不是詢問關於 `Character`，我們會發現它是一個介面：
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -124,8 +102,7 @@ we asked about `Character` instead we'd find that it is an interface:
 `} />);
 </script>
 
-It's useful for an object to know what fields are available, so let's
-ask the introspection system about `Droid`:
+對於了解一個物件它的欄位是否可用是相當有用的，讓我們詢問自我檢查系統關於 `Droid`：
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -150,16 +127,11 @@ ask the introspection system about `Droid`:
 `} />);
 </script>
 
-Those are our fields that we defined on `Droid`!
+這些欄位是我們定義在 `Droid` 的！
 
-`id` looks a bit weird there, it has no name for the type. That's
-because it's a "wrapper" type of kind `NON_NULL`. If we queried for
-`ofType` on that field's type, we would find the `String` type there,
-telling us that this is a non-null String.
+`id` 在這看起來有點奇怪，它在類型沒有名稱。那是因為它是一個 `NON_NULL` wrapper。如果我們查詢 `ofType` 對該欄位的類型，我們會發現 `String` 類型，告訴我們它是一個 non-null 字串。
 
-Similarly, both `friends` and `appearsIn` have no name, since they are the
-`LIST` wrapper type. We can query for `ofType` on those types, which will
-tell us what these are lists of.
+同樣的，`frineds` 和 `appearIn` 兩者都沒有名稱，雖然它們是 `LIST` wrapper 類型。我們可以查詢在那些類型的 `ofType`，將這些列出告訴我們。
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -189,8 +161,7 @@ tell us what these are lists of.
 `} />);
 </script>
 
-Let's end with a feature of the introspection system particularly useful
-for tooling; let's ask the system for documentation!
+讓我們結束自我檢查系統特別有用的功能；讓我們向系統請求文件！
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -205,12 +176,6 @@ for tooling; let's ask the system for documentation!
 `} />);
 </script>
 
-So we can access the documentation about the type system using introspection,
-and create documentation browsers, or rich IDE experiences.
+所以我們可以使用自我檢查存取關於類型系統的文件，並建立文件瀏覽器，或是 rich IDE experiences。
 
-This has just scratched the surface of the introspection system; we can
-query for enum values, what interfaces a type implements, and more. We
-can even introspect on the introspection system itself. The specification goes
-into more detail about this topic in the "Introspection" section, and the [introspection](https://github.com/graphql/graphql-js/blob/master/src/type/introspection.js)
-file in GraphQL.js contains code implementing a specification-compliant GraphQL
-query introspection system.
+這只是自我檢查系統的表面而已；我們可以對枚舉的值查詢，它的類型是實作哪個介面，甚至更多。我們甚至可以檢查自我檢查系統的本身。更多詳細關於「檢查」部份這個主題的規範，和在 GraphQL.js [introspection](https://github.com/graphql/graphql-js/blob/master/src/type/introspection.js) 目錄包含的程式碼實作規範相容於 GraphQL 自我檢查系統。
