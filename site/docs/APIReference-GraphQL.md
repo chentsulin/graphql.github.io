@@ -67,7 +67,7 @@ var GraphQL = require('graphql'); // CommonJS
   <li>
     <a href="../api-reference-type-system/#graphqlenumtype">
       <pre>class GraphQLEnumType</pre>
-      在 GraphQL 內定義有效值清單的 enum 類型。
+      在 GraphQL 內定義 enum 類型的有效值清單。
     </a>
   </li>
   <li>
