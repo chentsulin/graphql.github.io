@@ -29,7 +29,7 @@ var GraphQLValidator = require('graphql/validation'); // CommonJS
   </li>
 </ul>
 
-## Validation
+## 驗證
 
 ### validate
 
