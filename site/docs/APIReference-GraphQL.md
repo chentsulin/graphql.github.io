@@ -155,16 +155,16 @@ graphql(
 
 ## Schema
 
-參閱 [Type System API Reference](../api-reference-type-system#schema).
+參閱 [Type System API Reference](../api-reference-type-system#schema)。
 
 ## Type Definitions
 
-參閱 [Type System API Reference](../api-reference-type-system#definitions).
+參閱 [Type System API Reference](../api-reference-type-system#definitions)。
 
 ## Scalars
 
-參閱 [Type System API Reference](../api-reference-type-system#scalars).
+參閱 [Type System API Reference](../api-reference-type-system#scalars)。
 
 ## Errors
 
-參閱 [Errors API Reference](../api-reference-errors)
+參閱 [Errors API Reference](../api-reference-errors)。
