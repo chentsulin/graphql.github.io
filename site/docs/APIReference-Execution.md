@@ -24,7 +24,7 @@ var GraphQLExecution = require('graphql/execution'); // CommonJS
   </li>
 </ul>
 
-## Execution
+## 執行
 
 ### execute
 
