@@ -5,15 +5,14 @@ category: API Reference
 permalink: /docs/api-reference-utilities/
 ---
 
-The `graphql/utilities` module contains common useful computations to use with
-the GraphQL language and type objects.
+`graphql/utilities` module 在 GraphQL 語言和類型物件包含常見有用的計算和使用。
 
 ```js
 import { ... } from 'graphql/utilities'; // ES6
 var GraphQLUtilities = require('graphql/utilities'); // CommonJS
 ```
 
-## Overview
+## 概觀
 
 *Introspection*
 
@@ -21,13 +20,13 @@ var GraphQLUtilities = require('graphql/utilities'); // CommonJS
   <li>
     <a href="#introspectionquery">
       <pre>var introspectionQuery</pre>
-      A GraphQL introspection query containing enough information to reproduce a type system.
+      GraphQL 自我檢查查詢包含足夠的資訊來重現類型系統。
     </a>
   </li>
   <li>
     <a href="#buildclientschema">
       <pre>function buildClientSchema</pre>
-      Produces a client schema given the result of querying a schema with `introspectionQuery`.
+      查詢 `introspectionQuery` schema 的結果產生一個客戶端的 schema。
     </a>
   </li>
 </ul>
@@ -38,31 +37,31 @@ var GraphQLUtilities = require('graphql/utilities'); // CommonJS
   <li>
     <a href="#printschema">
       <pre>function printSchema</pre>
-      Prints the schema in a standard format.
+      在一個標準的格式列印 schema。
     </a>
   </li>
   <li>
     <a href="#printintrospectionschema">
       <pre>function printIntrospectionSchema</pre>
-      Prints the introspections featurs of the schema in a standard format.
+      在一個標準的格式列印 schema 的自我檢查功能。
     </a>
   </li>
   <li>
     <a href="#buildastschema">
       <pre>function buildASTSchema</pre>
-      Builds a schema from a parsed AST Schema.
+      從一個解析的 AST Schema 建立一個 schema。
     </a>
   </li>
   <li>
     <a href="#typefromast">
       <pre>function typeFromAST</pre>
-      Looks up a type referenced in an AST in the GraphQLSchema.
+      在 GraphQLSchema 的 AST 查詢一個類型參考。
     </a>
   </li>
   <li>
     <a href="#astfromvalue">
       <pre>function astFromValue</pre>
-      Produces a GraphQL Input Value AST given a JavaScript value.
+      給定 JavaScript 的值產生一個 GraphQL 輸入值 AST 。
     </a>
   </li>
 </ul>
@@ -73,7 +72,7 @@ var GraphQLUtilities = require('graphql/utilities'); // CommonJS
   <li>
     <a href="#typeinfo">
       <pre>class TypeInfo</pre>
-      Tracks type and field definitions during a visitor AST traversal..
+      在一個 visitor AST 遍歷 Tracks 類型和欄位定義..
     </a>
   </li>
 </ul>
@@ -84,13 +83,13 @@ var GraphQLUtilities = require('graphql/utilities'); // CommonJS
   <li>
     <a href="#isvalidjsvalue">
       <pre>function isValidJSValue</pre>
-      Determins if a JavaScript value is valid for a GraphQL type.
+      如果 JavaScript 值是有效的，定義 GraphQL 類型。
     </a>
   </li>
   <li>
     <a href="#isvalidliteralvalue">
       <pre>function isValidLiteralValue</pre>
-      Determins if a literal value from an AST is valid for a GraphQL type.
+      如果來自 AST 的文字值是有效的，定義 GraphQL 類型。
     </a>
   </li>
 </ul>
@@ -103,8 +102,7 @@ var GraphQLUtilities = require('graphql/utilities'); // CommonJS
 var introspectionQuery: string
 ```
 
-A GraphQL query that queries a server's introspection system for enough
-information to reproduce that server's type system.
+GraphQL 查詢伺服器的自我檢查系統有足夠的資訊可以複製伺服器的類型系統。
 
 ### buildClientSchema
 
@@ -114,13 +112,9 @@ function buildClientSchema(
 ): GraphQLSchema
 ```
 
-Build a GraphQLSchema for use by client tools.
+透過客戶端工具來產生一個 GraphQLSChema。
 
-Given the result of a client running the introspection query, creates and
-returns a GraphQLSchema instance which can be then used with all graphql-js
-tools, but cannot be used to execute a query, as introspection does not
-represent the "resolver", "parse" or "serialize" functions or any other
-server-internal mechanisms.
+給予客戶端執行自我檢查的查詢的結果，建立並回傳一個 GraphQLSchema instance，然後就可以用於所有的 graphql-js 工具，但不能用於執行查詢，因為自我檢查並不代表「resolver」，「parse」或「serialize」function 或其他任何伺服器內部的機制。
 
 ## Schema Representation
 
@@ -130,7 +124,7 @@ server-internal mechanisms.
 function printSchema(schema: GraphQLSchema): string {
 ```
 
-Prints the provided schema in the Schema Language format.
+在 Schema Language 格式列印提供的 schema。
 
 ### printIntrospectionSchema
 
@@ -138,7 +132,7 @@ Prints the provided schema in the Schema Language format.
 function printIntrospectionSchema(schema: GraphQLSchema): string {
 ```
 
-Prints the built-in introspection schema in the Schema Language format.
+在 Schema Language 格式列印內建的自我檢查 schema。
 
 ### buildASTSchema
 
@@ -150,11 +144,7 @@ function buildASTSchema(
 ): GraphQLSchema
 ```
 
-This takes the ast of a schema document produced by `parseSchemaIntoAST` in
-`graphql/language/schema` and constructs a GraphQLSchema instance which can be
-then used with all graphql-js tools, but cannot be used to execute a query, as
-introspection does not represent the "resolver", "parse" or "serialize"
-functions or any other server-internal mechanisms.
+在 `graphql/language/schema` 和建構一個 GraphQLSchema instance，藉由 `parseSchemaIntoAST` 產生的 AST 的 Schema Document，可以用於所有的 graphql-js 工具，但不能用於執行查詢，因為自我檢查並不代表「resolver」，「parse」或「serialize」function 或其他任何伺服器內部的機制。
 
 ### typeFromAST
 
@@ -165,8 +155,7 @@ function typeFromAST(
 ): ?GraphQLType
 ```
 
-Given the name of a Type as it appears in a GraphQL AST and a Schema, return the
-corresponding GraphQLType from that schema.
+給定一個類型的名稱，因為出現在 GraphQL AST 和 Schema，從 schema 回傳對應的 GraphQLType。
 
 ### astFromValue
 
@@ -176,10 +165,9 @@ function astFromValue(
   type?: ?GraphQLType
 ): ?Value
 ```
-Produces a GraphQL Input Value AST given a JavaScript value.
+給定 JavaScript 的值產生一個 GraphQL 輸入值 AST 。
 
-Optionally, a GraphQL type may be provided, which will be used to
-disambiguate between value primitives.
+可能提供一個 GraphQL 類型，將被用於值和 primitive 兩者間的歧義。
 
 ## Visitors
 
@@ -197,9 +185,7 @@ class TypeInfo {
 }
 ```
 
-TypeInfo is a utility class which, given a GraphQL schema, can keep track
-of the current field and type definitions at any point in a GraphQL document
-AST during a recursive descent by calling `enter(node)` and `leave(node)`.
+TypeInfo 是一個 utility 類別，給予了 GraphQL schema，在藉由呼叫 `enter(node)` 和 `leave(node)` 通過遞迴方式，可以保持追蹤在任何 GraphQL document AST 的點目前欄位和類型定義。
 
 ## Value Validation
 
@@ -209,9 +195,7 @@ AST during a recursive descent by calling `enter(node)` and `leave(node)`.
 function isValidJSValue(value: any, type: GraphQLInputType): string[]
 ```
 
-Given a JavaScript value and a GraphQL type, determine if the value will be
-accepted for that type. This is primarily useful for validating the
-runtime values of query variables.
+給予一個 JavaScript 的值和 GraphQL 類型，如果該值將接受該類型則定義。這主要是用於驗證 runtime 時查詢變數的值。
 
 ### isValidLiteralValue
 
@@ -222,8 +206,6 @@ function isValidLiteralValue(
 ): string[]
 ```
 
-Utility for validators which determines if a value literal AST is valid given
-an input type.
+Utility 用於驗證 AST 的文字值是否是有效的給定輸入類型。
 
-Note that this only validates literal values, variables are assumed to
-provide values of the correct type.
+注意，這只驗證文字值，變數被假設都提供正確類型的值。
