@@ -6,44 +6,43 @@ permalink: /docs/api-reference-errors/
 next: /docs/api-reference-utilities/
 ---
 
-The `graphql/error` module is responsible for creating and formating
-GraphQL errors.
+`graphql/error` module 是負責建立和格式化 GraphQL 錯誤。
 
 ```js
 import { ... } from 'graphql/error'; // ES6
 var GraphQLError = require('graphql/error'); // CommonJS
 ```
 
-## Overview
+## 概觀
 
 <ul class="apiIndex">
   <li>
     <a href="#graphqlerror">
       <pre>class GraphQLError</pre>
-      A representation of an error that occurred within GraphQL.
+      在 GraphQL 發生錯誤的表達形式。
     </a>
   </li>
   <li>
     <a href="#syntaxerror">
       <pre>function syntaxError</pre>
-      Produces a GraphQLError representing a syntax error.
+      產生一個 GraphQLError 表示語法的錯誤。
     </a>
   </li>
   <li>
     <a href="#locatedError">
       <pre>function locatedError</pre>
-      Produces a new GraphQLError aware of the location responsible for the error.
+      產生一個新的 GraphQLError 負責已知的錯誤位置。
     </a>
   </li>
   <li>
     <a href="#formaterror">
       <pre>function formatError</pre>
-      Format an error according to the rules described by the Response Format.
+      根據 Response Format 規則描述來格式化一個錯誤。
     </a>
   </li>
 </ul>
 
-## Errors
+## 錯誤
 
 ### GraphQLError
 
@@ -59,9 +58,7 @@ class GraphQLError extends Error {
 }
 ```
 
-A representation of an error that occurred within GraphQL. Contains
-information about where in the query the error occurred for debugging. Most
-commonly constructed with `locatedError` below.
+在 GraphQL 發生錯誤的表達形式。包含哪裡的查詢發生錯誤的資訊，有助於 debug。大部分普遍採用下面的 `locatedError`。
 
 ### syntaxError
 
@@ -73,8 +70,7 @@ function syntaxError(
 ): GraphQLError;
 ```
 
-Produces a GraphQLError representing a syntax error, containing useful
-descriptive information about the syntax error's position in the source.
+產生一個 GraphQLError 表示一個語法的錯誤，包含在 source 中發生語法錯誤的位置的描述資訊。
 
 ### locatedError
 
@@ -82,9 +78,7 @@ descriptive information about the syntax error's position in the source.
 function locatedError(error: ?Error, nodes: Array<any>): GraphQLError {
 ```
 
-Given an arbitrary Error, presumably thrown while attempting to execute a
-GraphQL operation, produce a new GraphQLError aware of the location in the
-document responsible for the original Error.
+當給定一個任意的錯誤，嘗試執行一個 GraphQL 操作想必會拋出錯誤，則產生一個新的 GraphQLError 在 document 負責原來錯誤已知的位置。
 
 ### formatError
 
@@ -102,5 +96,4 @@ type GraphQLErrorLocation = {
 };
 ```
 
-Given a GraphQLError, format it according to the rules described by the
-Response Format, Errors section of the GraphQL Specification.
+給定一個 GraphQLError，在 GraphQL 規範的 Errors 部份，根據 Response Format 規則描述來格式化一個錯誤。
