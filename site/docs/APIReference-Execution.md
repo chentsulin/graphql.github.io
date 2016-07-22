@@ -6,26 +6,25 @@ permalink: /docs/api-reference-execution/
 next: /docs/api-reference-errors/
 ---
 
-The `graphql/execution` module is responsible for the execution phase of
-fulfilling a GraphQL request.
+`graphql/execution` module 負責滿足 GraphQL 請求的執行階段。
 
 ```js
 import { execute } from 'graphql/execution'; // ES6
 var GraphQLExecution = require('graphql/execution'); // CommonJS
 ```
 
-## Overview
+## 概觀
 
 <ul class="apiIndex">
   <li>
     <a href="#execute">
       <pre>function execute</pre>
-      Executes a GraphQL request on the provided schema.
+      在提供的 schema 上執行一個 GraphQL 請求。
     </a>
   </li>
 </ul>
 
-## Execution
+## 執行
 
 ### execute
 
@@ -45,13 +44,10 @@ type ExecutionResult = {
 }
 ```
 
-Implements the "Evaluating requests" section of the GraphQL specification.
+實作 GraphQL 規範的「評估請求」部份。
 
-Returns a Promise that will eventually be resolved and never rejected.
+回傳一個最終將會被 resolve 而且永遠不會被 reject 的 Promise。
 
-If the arguments to this function do not result in a legal execution context,
-a GraphQLError will be thrown immediately explaining the invalid input.
+如果這個 function 的參數不是一個合法的執行 context，將立即拋出一個 GraphQLError 說明無效的 input。
 
-`ExecutionResult` represents the result of execution. `data` is the result of
-executing the query, `errors` is null if no errors occurred, and is a
-non-empty array if an error occurred.
+`ExecutionResult` 代表執行的結果。`data` 是執行查詢的結果，如果沒有發生錯誤 `error` 是 null，而如果發生錯誤，則是一個非空的陣列。
