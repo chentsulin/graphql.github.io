@@ -9,9 +9,8 @@ npm run build
 cd build
 git init
 git checkout -b gh-pages
-# git config user.name "Travis CI"
+git config user.name "Travis CI"
 git add .
-# git commit -a -m "Auto-deploy by Travis CI"
-git commit -a -m "deploy"
+git commit -a -m "Auto-deploy by Travis CI"
 # git push --force --quiet "https://${GH_TOKEN}@github.com/graphql/graphql.github.io.git" master:master
-git push --force --quiet "https://github.com/chentsulin/graphql.github.io.git" gh-pages:gh-pages
+git push --force --quiet "https://${GH_TOKEN}@github.com/chentsulin/graphql.github.io.git" gh-pages:gh-pages
