@@ -6,32 +6,31 @@ permalink: /docs/api-reference-validation/
 next: /docs/api-reference-execution/
 ---
 
-The `graphql/validation` module fulfills the Validation phase of fulfilling a
-GraphQL result.
+`graphql/validation` module 實踐滿足一個 GraphQL 結果的驗證階段。
 
 ```js
 import { validate } from 'graphql/validation'; // ES6
 var GraphQLValidator = require('graphql/validation'); // CommonJS
 ```
 
-## Overview
+## 概觀
 
 <ul class="apiIndex">
   <li>
     <a href="#validate">
       <pre>function validate</pre>
-      Validates an AST against a provided Schema.
+      針對提供的 Schema 驗證一個 AST。
     </a>
   </li>
   <li>
     <a href="#specifiedrules">
       <pre>var specifiedRules</pre>
-      A list of standard validation rules described in the GraphQL specification.
+      在 GraphQL 規範中所描述的標準驗證規則列表。
     </a>
   </li>
 </ul>
 
-## Validation
+## 驗證
 
 ### validate
 
@@ -43,21 +42,15 @@ function validate(
 ): Array<GraphQLError>
 ```
 
-Implements the "Validation" section of the spec.
+實作規範中的「驗證」章節。
 
-Validation runs synchronously, returning an array of encountered errors, or
-an empty array if no errors were encountered and the document is valid.
+驗證是同步執行的，回傳一個發生的錯誤組成的陣列，或是如果沒有錯誤且 document 是有效的的話，回傳一個空陣列。
 
-A list of specific validation rules may be provided. If not provided, the
-default list of rules defined by the GraphQL specification will be used.
+可以提供一個特定驗證規則的列表。如果沒有提供，將會使用 GraphQL 規範所定義的預設規則列表。
 
-Each validation rules is a function which returns a visitor
-(see the language/visitor API). Visitor methods are expected to return
-GraphQLErrors, or Arrays of GraphQLErrors when invalid.
+每個驗證規則都是一個回傳 visitor（參考 language/visitor）的 function。當驗證失敗時，Visitor 方法預期會回傳 GraphQLErrors，或是 GraphQLErrors 的陣列。
 
-Visitors can also supply `visitSpreadFragments: true` which will alter the
-behavior of the visitor to skip over top level defined fragments, and instead
-visit those fragments at every point a spread is encountered.
+Visitors 也可以提供 `visitSpreadFragments: true`，它將改變 visitor 的行為以跳過頂層所定義的 fragment，取而代之訪問那些在遇到 spread 的每個點的 fragment。
 
 ### specifiedRules
 
@@ -65,4 +58,4 @@ visit those fragments at every point a spread is encountered.
 var specifiedRules: Array<(context: ValidationContext): any>
 ```
 
-This set includes all validation rules defined by the GraphQL spec
+這個組合包含由 GraphQL 規範所定義的所有驗證規則
