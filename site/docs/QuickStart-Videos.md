@@ -6,74 +6,73 @@ permalink: /docs/videos/
 next: /docs/intro/
 ---
 
-As conference presentations are published to YouTube, videos will be posted here
-in chronological order.
+隨著 conference 的演說被發佈到 YouTube，影片會按照時間順序貼在這裡。
 
-## Zero to GraphQL in 30 Minutes
+## 30 分鐘從零開始 GraphQL
 
-*Steven Luscher – April 25, 2016*
+*Steven Luscher – 四月 25, 2016*
 
-Stephen explains how to quickly set up a GraphQL endpoint starting from existing
-data services like Django, Rails, or an existing REST API while live-coding
-examples in Ruby, Python, and Javascript.
+Stephen 在 live-coding Ruby、Python 與 Javascript 的範例的同時，
+解釋了如何從既存的資料服務開始
+快速地設置一個 GraphQL endpoint，
+像是 Django、Rails 或是一個既存的 REST API。
 
 <iframe width="760" height="426" src="https://www.youtube-nocookie.com/embed/UBGzsb2UkeY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-## GraphQL, A Horizontal Platform – @Scale
+## GraphQL，一個同階層的平台 – @Scale
 
-*Nick Schrock – September 14, 2015*
+*Nick Schrock – 九月 14, 2015*
 
-Nick introduces GraphQL and its origin and explains how React and GraphQL are
-horizontal platforms which can improve the current state of mobile development.
+Nick 介紹了 GraphQL 和它的緣起並說明 React 與 GraphQL 如何會是
+可以改善行動開發現狀的同階層平台。
 
 <iframe width="760" height="426" src="https://www.youtube-nocookie.com/embed/_9RgHXqH8J0?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-## Exploring GraphQL – React Rally
+## 探索 GraphQL – React Rally
 
-*Lee Byron – August 24, 2015*
+*Lee Byron – 八月 24, 2015*
 
-Lee introduces GraphQL and its origin and announces the public release of
-GraphiQL, an in-browser GraphQL IDE.
+Lee 介紹了 GraphQL 和它的緣起並宣布公開釋出
+GraphiQL，一個瀏覽器內的 GraphQL IDE。
 
 <iframe width="760" height="426" src="https://www.youtube-nocookie.com/embed/cr4QB3j8qFc?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-## Using GraphQL – React Rally
+## 使用 GraphQL – React Rally
 
-*Nick Schrock – August 24, 2015*
+*Nick Schrock – 八月 24, 2015*
 
-Nick expands on Lee's talk, explaining how to use graphql-js to build a server.
-Then introduces how wrapping an existing REST server can be an effective way to
-get started with GraphQL and announces the public release of "swapi-graphql" a
-wrapper of the Star Wars REST API to illustrate. Many live demos of "swapi-graphql"
-using GraphiQL.
+Nick 延伸 Lee 的講題，說明如何使用 graphql-js 去建置一個伺服器。
+接著介紹如何包裝一個既存的 REST 伺服器可以用有效的方式來
+入門 GraphQL 並宣布公開釋出「swapi-graphql」包裝了
+Star Wars REST API 來說明。許多「swapi-graphql」的 live demo 使用 GraphiQL。
 
 <iframe width="760" height="426" src="https://www.youtube-nocookie.com/embed/KOudxKJXsjc?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-## Exploring GraphQL – React Europe
+## 探索 GraphQL – React Europe
 
-*Lee Byron – July 2, 2015*
+*Lee Byron – 七月 2, 2015*
 
-Lee introduces GraphQL and its origin and announces the public release of the
-GraphQL working draft specification and "graphql-js" a reference implementation.
+Lee 介紹了 GraphQL 和它的緣起並宣布公開釋出
+GraphQL 規範草案和「graphql-js」一個參考實作。
 
 <iframe width="760" height="426" src="https://www.youtube-nocookie.com/embed/WQLzZf34FJ8?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-## Creating a GraphQL Server – React Europe
+## 建立一個 GraphQL 伺服器 – React Europe
 
-*Nick Schrock, Dan Schafer – July 3, 2015*
+*Nick Schrock, Dan Schafer – 七月 3, 2015*
 
-Nick and Dan expands on Lee's talk, explaining how to use graphql-js to build a
-server and explain the merits of a strong type system.
+Nick 和 Dan 延伸 Lee 的講題，說明如何使用 graphql-js 來建置
+一個伺服器並解釋了強型別系統的優點。
 
 <iframe width="760" height="426" src="https://www.youtube-nocookie.com/embed/gY48GW87Feo?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
 
-## Data fetching for React applications at Facebook – React.js Conf
+## 在 Facebook 裡針對 React 應用程式的資料抓取 – React.js Conf
 
-*Dan Schafer, Jing Chen – January 28, 2015*
+*Dan Schafer, Jing Chen – 一月 28, 2015*
 
-Dan introduces GraphQL, the data-fetching language used at Facebook. Jing
-introduces Relay, an application framework using React and GraphQL. Both
-technologies are being used at Facebook to build products and will soon
-be open-sourced.
+Dan 介紹了 GraphQL，在 Facebook 被使用的資料抓取語言。
+Jing 介紹了 Relay，一個使用 React 跟 GraphQL 應用程式框架。
+兩個技術都被用在 Facebook 來打造產品並且
+將會很快被開源。
 
 <iframe width="760" height="426" src="https://www.youtube-nocookie.com/embed/9sc8Pyc51uU?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
