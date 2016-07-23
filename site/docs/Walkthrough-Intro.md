@@ -1,5 +1,5 @@
 ---
-title: Introduction
+title: 簡介
 layout: ../_core/DocsLayout
 category: Walkthrough
 permalink: /docs/intro/
