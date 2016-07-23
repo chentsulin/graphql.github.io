@@ -6,7 +6,8 @@ permalink: /docs/api-reference-validation/
 next: /docs/api-reference-execution/
 ---
 
-`graphql/validation` module 實踐並滿足 GraphQL 在驗證階段的結果。
+`graphql/validation` module 實踐滿足一個 GraphQL 結果的驗證階段。
+
 ```js
 import { validate } from 'graphql/validation'; // ES6
 var GraphQLValidator = require('graphql/validation'); // CommonJS
@@ -18,13 +19,13 @@ var GraphQLValidator = require('graphql/validation'); // CommonJS
   <li>
     <a href="#validate">
       <pre>function validate</pre>
-      驗證一個針對 AST 提供的 Schema。
+      針對提供的 Schema 驗證一個 AST。
     </a>
   </li>
   <li>
     <a href="#specifiedrules">
       <pre>var specifiedRules</pre>
-      GraphQL 規範中描述的標準驗證規則列表。
+      在 GraphQL 規範中所描述的標準驗證規則列表。
     </a>
   </li>
 </ul>
@@ -41,14 +42,15 @@ function validate(
 ): Array<GraphQLError>
 ```
 
-實作「驗證」規範。
+實作規範中的「驗證」章節。
 
-驗證是同步執行的，如果發生錯誤回傳一個陣列，如果沒有發生錯誤且 document 已驗證，回傳一個空的陣列。
+驗證是同步執行的，回傳一個發生的錯誤組成的陣列，或是如果沒有錯誤且 document 是有效的的話，回傳一個空陣列。
 
-可能會提供一系列特定的驗證規則。如果沒有提供驗證規則，將使用預設 GraphQL 規範所定義的規則列表。
+可以提供一個特定驗證規則的列表。如果沒有提供，將會使用 GraphQL 規範所定義的預設規則列表。
 
-每個驗證規則是一個 function 且回傳一個 visitor（參考 language/visitor）。Visitor 方法預期回傳一個 GraphQLErrors，或是當驗證失敗時，回傳一個 GraphQLErrors 的陣列。
-Visitors 還可以提供 `visitSpreadFragments: true` 將可以改變 visitor 跳過頂層所定義的 fragments 的行為，而是拜訪那些在 spread 中遇到的每個點。
+每個驗證規則都是一個回傳 visitor（參考 language/visitor）的 function。當驗證失敗時，Visitor 方法預期會回傳 GraphQLErrors，或是 GraphQLErrors 的陣列。
+
+Visitors 也可以提供 `visitSpreadFragments: true`，它將改變 visitor 的行為以跳過頂層所定義的 fragment，取而代之訪問那些在遇到 spread 的每個點的 fragment。
 
 ### specifiedRules
 
@@ -56,4 +58,4 @@ Visitors 還可以提供 `visitSpreadFragments: true` 將可以改變 visitor �
 var specifiedRules: Array<(context: ValidationContext): any>
 ```
 
-這個設定包含由 GraphQL 定義的規範所有驗證規則
+這個組合包含由 GraphQL 規範所定義的所有驗證規則
