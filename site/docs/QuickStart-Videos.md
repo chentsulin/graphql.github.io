@@ -1,5 +1,5 @@
 ---
-title: Videos
+title: 影片
 layout: ../_core/DocsLayout
 category: Quick Start
 permalink: /docs/videos/
