@@ -5,4 +5,8 @@ env:
 language: node_js
 node_js: v4.0.0
 
+branches:
+  only:
+  - source
+  
 after_success: "./resources/publish.sh"
