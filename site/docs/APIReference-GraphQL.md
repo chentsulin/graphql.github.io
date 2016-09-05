@@ -6,15 +6,14 @@ permalink: /docs/api-reference-graphql/
 next: /docs/api-reference-language/
 ---
 
-The `graphql` module exports a core subset of GraphQL functionality for creation
-of GraphQL type systems and servers.
+`graphql` module 輸出一個 GraphQL 核心功能的子集來建立 GraphQL 類型系統和伺服器。
 
 ```js
 import { ... } from 'graphql'; // ES6
 var GraphQL = require('graphql'); // CommonJS
 ```
 
-## Overview
+## 概觀
 
 *Entry Point*
 
@@ -22,7 +21,7 @@ var GraphQL = require('graphql'); // CommonJS
   <li>
     <a href="#graphql">
       <pre>function graphql</pre>
-      Lexes, parses, validates, and executes a GraphQL request on a schema.
+      Lexes、解析、驗證和在一個 schema 執行一個 GraphQL 請求。
     </a>
   </li>
 </ul>
@@ -33,7 +32,7 @@ var GraphQL = require('graphql'); // CommonJS
   <li>
     <a href="../api-reference-type-system/#graphqlschema">
       <pre>class GraphQLSchema</pre>
-      A representation of the capabilities of a GraphQL Server.
+      GraphQL 伺服器的表達功能。
     </a>
   </li>
 </ul>
@@ -44,49 +43,49 @@ var GraphQL = require('graphql'); // CommonJS
   <li>
     <a href="../api-reference-type-system/#graphqlscalartype">
       <pre>class GraphQLScalarType</pre>
-      A scalar type within GraphQL.
+      GraphQL 的 scalar 類型。
     </a>
   </li>
   <li>
     <a href="../api-reference-type-system/#graphqlobjecttype">
       <pre>class GraphQLObjectType</pre>
-      An object type within GraphQL that contains fields.
+      在 GraphQL 中包含欄位的物件類型。
     </a>
   </li>
   <li>
     <a href="../api-reference-type-system/#graphqlinterfacetype">
       <pre>class GraphQLInterfaceType</pre>
-      An interface type within GraphQL that defines fields implementations will contain.
+      在 GraphQL 包含一個介面類別型內定義欄位的實作。
     </a>
   </li>
   <li>
     <a href="../api-reference-type-system/#graphqluniontype">
       <pre>class GraphQLUnionType</pre>
-      A union type within GraphQL that defines a list of implementations.
+      在 GraphQL 定義一個實作的關聯類型清單。
     </a>
   </li>
   <li>
     <a href="../api-reference-type-system/#graphqlenumtype">
       <pre>class GraphQLEnumType</pre>
-      An enum type within GraphQL that defines a list of valid values.
+      在 GraphQL 內定義 enum 類型的有效值清單。
     </a>
   </li>
   <li>
     <a href="../api-reference-type-system/#graphqlinputobjecttype">
       <pre>class GraphQLInputObjectType</pre>
-      An input object type within GraphQL that represents structured inputs.
+      在 GraphQL 內表示結構化輸入的輸入的物件類型。
     </a>
   </li>
   <li>
     <a href="../api-reference-type-system/#graphqllist">
       <pre>class GraphQLList</pre>
-      A type wrapper around other types that represents a list of those types.
+      一個類型 wrapper 包裝其他類型來表示這些類型的列表。
     </a>
   </li>
   <li>
     <a href="../api-reference-type-system/#graphqlnonnull">
       <pre>class GraphQLNonNull</pre>
-      A type wrapper around other types that represents a non-null version of those types.
+      一個類型 wrapper 包裝其他類型來表示非 null 版本的類型。
     </a>
   </li>
 </ul>
@@ -103,25 +102,25 @@ var GraphQL = require('graphql'); // CommonJS
   <li>
     <a href="../api-reference-type-system/#graphqlfloat">
       <pre>var GraphQLFloat</pre>
-      A scalar type representing floats.
+      一個 scalar 類型來表達 float。
     </a>
   </li>
   <li>
     <a href="../api-reference-type-system/#graphqlstring">
       <pre>var GraphQLString</pre>
-      A scalar type representing strings.
+      一個 scalar 類型來表達 string。
     </a>
   </li>
   <li>
     <a href="../api-reference-type-system/#graphqlboolean">
       <pre>var GraphQLBoolean</pre>
-      A scalar type representing booleans.
+      一個 scalar 類型來表達 boolean。
     </a>
   </li>
   <li>
     <a href="../api-reference-type-system/#graphqlid">
       <pre>var GraphQLID</pre>
-      A scalar type representing IDs.
+      一個 scalar 類型來表達 ID。
     </a>
   </li>
 </ul>
@@ -132,7 +131,7 @@ var GraphQL = require('graphql'); // CommonJS
   <li>
     <a href="../api-reference-errors/#formaterror">
       <pre>function formatError</pre>
-      Format an error according to the rules described by the Response Format.
+      根據回應格式的規則描述，格式化一個錯誤。
     </a>
   </li>
 </ul>
@@ -152,27 +151,20 @@ graphql(
 ): Promise<GraphQLResult>
 ```
 
-The `graphql` function lexes, parses, validates and executes a GraphQL request.
-It requires a `schema` and a `requestString`. Optional arguments include a
-`rootValue`, which will get passed as the root value to the executor, a `contextValue`,
-which will get passed to all resolve functions,
-`variableValues`, which will get passed to the executor to provide values for
-any variables in `requestString`, and `operationName`, which allows the caller
-to specify which operation in `requestString` will be run, in cases where
-`requestString` contains multiple top-level operations.
+`graphql` 的功能：lexes、parses、validates 和執行一個 GraphQL 請求。它要求一個 `schema` 和一個 `requestString`。可選的參數包含一個 `rootValue`，它可以取得並作為 root 的參數被傳送到 executor，`contextValue` 將取得所有被傳送到 resolve 的 function，`variableValues` 將取得被傳送到 executor，對所有在 `requestString` 內的變數提供值，`operationName` 允許 caller 去指定在 `requestString` 那些操作要執行，在這個情況下 `requestString` 包含多個頂層的操作。
 
 ## Schema
 
-See the [Type System API Reference](../api-reference-type-system#schema).
+參閱 [Type System API Reference](../api-reference-type-system#schema)。
 
 ## Type Definitions
 
-See the [Type System API Reference](../api-reference-type-system#definitions).
+參閱 [Type System API Reference](../api-reference-type-system#definitions)。
 
 ## Scalars
 
-See the [Type System API Reference](../api-reference-type-system#scalars).
+參閱 [Type System API Reference](../api-reference-type-system#scalars)。
 
 ## Errors
 
-See the [Errors API Reference](../api-reference-errors)
+參閱 [Errors API Reference](../api-reference-errors)。
