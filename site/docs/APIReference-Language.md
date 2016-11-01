@@ -6,15 +6,14 @@ permalink: /docs/api-reference-language/
 next: /docs/api-reference-type-system/
 ---
 
-The `graphql/language` module is responsible for parsing and operating on the
-GraphQL language.
+在 GraphQL language 的 `graphql/language` module 負責解析和操作。
 
 ```js
 import { ... } from 'graphql/language'; // ES6
 var GraphQLLanguage = require('graphql/language'); // CommonJS
 ```
 
-## Overview
+## 概觀
 
 *Source*
 
@@ -22,13 +21,13 @@ var GraphQLLanguage = require('graphql/language'); // CommonJS
   <li>
     <a href="#source">
       <pre>class Source</pre>
-      Represents the input string to the GraphQL server
+      代表輸入的字串到 GraphQL 伺服器
     </a>
   </li>
   <li>
     <a href="#getlocation">
       <pre>function getLocation</pre>
-      Converts a character offset to a row and column in the Source
+      在 Source 轉換一個字元偏移量（offset）到一個行（row）或列（column）
     </a>
   </li>
 </ul>
@@ -39,7 +38,7 @@ var GraphQLLanguage = require('graphql/language'); // CommonJS
   <li>
     <a href="#lex">
       <pre>function lex</pre>
-      Lexes a GraphQL Source according to the GraphQL Grammar
+      根據 GraphQL 語法 lexes 一個 GraphQL Source
     </a>
   </li>
 </ul>
@@ -50,19 +49,19 @@ var GraphQLLanguage = require('graphql/language'); // CommonJS
   <li>
     <a href="#parse">
       <pre>function parse</pre>
-      Parses a GraphQL Source according to the GraphQL Grammar
+      根據 GraphQL 語法解析一個 GraphQL Source
     </a>
   </li>
   <li>
     <a href="#parseValue">
       <pre>function parseValue</pre>
-      Parses a value according to the GraphQL Grammar
+      根據 GraphQL 語法解析一個值
     </a>
   </li>
   <li>
     <a href="#kind">
       <pre>var Kind</pre>
-      Represents the various kinds of parsed AST nodes.
+      代表各種被解析的 AST（抽象語法樹）節點。
     </a>
   </li>
 </ul>
@@ -73,13 +72,13 @@ var GraphQLLanguage = require('graphql/language'); // CommonJS
   <li>
     <a href="#visit">
       <pre>function visit</pre>
-      A general-purpose visitor to traverse a parsed GraphQL AST
+      一個 general-purpose visitor 遍歷解析 GraphQL AST
     </a>
   </li>
   <li>
     <a href="#break">
       <pre>var BREAK</pre>
-      A token to allow breaking out of the visitor.
+      一個 token 允許突然出現的 visitor。
     </a>
   </li>
 </ul>
@@ -90,7 +89,7 @@ var GraphQLLanguage = require('graphql/language'); // CommonJS
   <li>
     <a href="#print">
       <pre>function print</pre>
-      Prints an AST in a standard format.
+      在一個標準的格式列印一個 AST。
     </a>
   </li>
 </ul>
@@ -105,10 +104,7 @@ export class Source {
 }
 ```
 
-A representation of source input to GraphQL. The name is optional,
-but is mostly useful for clients who store GraphQL documents in
-source files; for example, if the GraphQL input is in a file Foo.graphql,
-it might be useful for name to be "Foo.graphql".
+一個表示輸入的來源 GraphQL，名稱是可選的，在 source 檔案對於誰在客戶端儲存了 GraphQL document 是相當有用的；例如，如果 GraphQL 輸入是在一個 Foo.graphql 的檔案中，命名為「Foo.graphql」是相當有用的。
 
 ### getLocation
 
@@ -121,8 +117,7 @@ type SourceLocation = {
 }
 ```
 
-Takes a Source and a UTF-8 character offset, and returns the corresponding
-line and column as a SourceLocation.
+接受一個 Source 和一個 UTF-8 字元 offset，並回傳對應的行和欄位作為一個 SourceLocation。
 
 ## Lexer
 
@@ -141,15 +136,9 @@ export type Token = {
 };
 ```
 
-Given a Source object, this returns a Lexer for that source.
-A Lexer is a function that acts like a generator in that every time
-it is called, it returns the next token in the Source. Assuming the
-source lexes, the final Token emitted by the lexer will be of kind
-EOF, after which the lexer will repeatedly return EOF tokens whenever
-called.
+給定一個 Source 物件，回傳一個 Lexer 給 source。一個 Lexer 是一個 function，在每次 Lexer 被呼叫時，它的行為像是一個 generator，在 Source 回傳下一個 token。假設 source lexes 由 lexer 將各個 EOF 最後的 Token 發出，之後每當 lexer 被呼叫時，將重複回傳 EOF token。
 
-The argument to the lexer function is optional, and can be used to
-rewind or fast forward the lexer to a new position in the source.
+lexer function 的參數是可選的，而且在 source 可以用於倒帶或快轉 lexer 的新位置。
 
 ## Parser
 
@@ -162,9 +151,9 @@ export function parse(
 ): Document
 ```
 
-Given a GraphQL source, parses it into a Document.
+給定一個 GraphQL source，解析成一個 Document。
 
-Throws GraphQLError if a syntax error is encountered.
+如果發生語法錯誤，拋出 GraphQLError。
 
 ### parseValue
 
@@ -175,16 +164,15 @@ export function parseValue(
 ): Value
 ```
 
-Given a string containing a GraphQL value, parse the AST for that value.
+給定一個 String 包含一個 GraphQL 的值，解析該值的 AST。
 
-Throws GraphQLError if a syntax error is encountered.
+如果遇到語法錯誤，拋出 GraphQLError。
 
-This is useful within tools that operate upon GraphQL Values directly and
-in isolation of complete GraphQL documents.
+在直接操作 GraphQL Values 和完整獨立的 GraphQL documents 的工具內是有用的。
 
 ### Kind
 
-An enum that describes the different kinds of AST nodes.
+描述了不同種類的 AST 節點枚舉。
 
 ## Visitor
 
@@ -194,96 +182,85 @@ An enum that describes the different kinds of AST nodes.
 function visit(root, visitor, keyMap)
 ```
 
-visit() will walk through an AST using a depth first traversal, calling
-the visitor's enter function at each node in the traversal, and calling the
-leave function after visiting that node and all of it's child nodes.
+visit() 將優先使用深層遍歷來走過整個 AST，在遍歷時在每個節點呼叫 visitor 的進入 function，在拜訪所有子節點後，並呼叫離開的 function。
 
-By returning different values from the enter and leave functions, the
-behavior of the visitor can be altered, including skipping over a sub-tree of
-the AST (by returning false), editing the AST by returning a value or null
-to remove the value, or to stop the whole traversal by returning BREAK.
+從進入和離開的 function 透過回傳不同的值，訪客的行為可以被改變，包含跳過 AST（透過回傳 false）的 sub-tree，透過回傳的值或是 null 來移除值編輯 AST，或是透過 BREAK 來停止整個遍歷。
 
-When using visit() to edit an AST, the original AST will not be modified, and
-a new version of the AST with the changes applied will be returned from the
-visit function.
+當使用 visit() 來編輯一個 AST，原始的 AST 不會被修改，而且從 visit function 回傳一個新版本的應用更改 AST。
 
 ```js
 var editedAST = visit(ast, {
   enter(node, key, parent, path, ancestors) {
     // @return
-    //   undefined: no action
-    //   false: skip visiting this node
-    //   visitor.BREAK: stop visiting altogether
-    //   null: delete this node
-    //   any value: replace this node with the returned value
+    //   undefined: 沒有 action
+    //   false: 跳過拜訪這個節點
+    //   visitor.BREAK: 停止所有拜訪
+    //   null: 刪除這個節點
+    //   any value: 替換此節點的回傳值
   },
   leave(node, key, parent, path, ancestors) {
     // @return
-    //   undefined: no action
-    //   false: no action
-    //   visitor.BREAK: stop visiting altogether
-    //   null: delete this node
-    //   any value: replace this node with the returned value
+    //   undefined: 沒有 action
+    //   false: 沒有 action
+    //   visitor.BREAK: 停止所有拜訪
+    //   null: 刪除這個節點
+    //   any value: 替換此節點的回傳值
   }
 });
 ```
 
-Alternatively to providing enter() and leave() functions, a visitor can
-instead provide functions named the same as the kinds of AST nodes, or
-enter/leave visitors at a named key, leading to four permutations of
-visitor API:
+另外提供了 enter() 和 leave() function，相反的 visitor 可以提供像是 AST 節點的 function 命名，或是進入或離開 visitor 命名的 key，導致四個 visitor API 的排列：
 
-1) Named visitors triggered when entering a node a specific kind.
+1) 觸發時進入某種特定的節點的命名的 visitors。
 
 ```js
 visit(ast, {
   Kind(node) {
-    // enter the "Kind" node
+    // 進入「Kind」節點
   }
 })
 ```
 
-2) Named visitors that trigger upon entering and leaving a node of
-   a specific kind.
+2) 在進入和離開特定的節點觸發被命名的 visitors。
 
 ```js
 visit(ast, {
   Kind: {
     enter(node) {
-      // enter the "Kind" node
+      // 進入「Kind」節點
     }
     leave(node) {
-      // leave the "Kind" node
+      // 離開「Kind」節點
     }
   }
 })
 ```
 
-3) Generic visitors that trigger upon entering and leaving any node.
+3) 在進入和離開任何節點觸發通用 visitors。
 
 ```js
 visit(ast, {
   enter(node) {
-    // enter any node
+    // 進入任何節點
   },
   leave(node) {
-    // leave any node
+    // 離開任何節點
   }
 })
 ```
 
-4) Parallel visitors for entering and leaving nodes of a specific kind.
+4) 在進入和離開特定的節點的平行 visitors。
 
 ```js
 visit(ast, {
   enter: {
     Kind(node) {
-      // enter the "Kind" node
+      // 進入「Kind」節點
     }
   },
   leave: {
     Kind(node) {
-      // leave the "Kind" node
+      // 離開「Kind」節點
     }
   }
 })
@@ -291,7 +268,7 @@ visit(ast, {
 
 ### BREAK
 
-The sentinel `BREAK` value described in the documentation of `visitor`.
+Sentinel `BREAK` 描述在 `visitor` 的文件。
 
 ## Printer
 
@@ -301,5 +278,4 @@ The sentinel `BREAK` value described in the documentation of `visitor`.
 function print(ast): string
 ```
 
-Converts an AST into a string, using one set of reasonable
-formatting rules.
+使用一套合理的格式規則，轉換一個 AST 成一個 string。
