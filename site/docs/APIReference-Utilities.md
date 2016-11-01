@@ -185,7 +185,7 @@ class TypeInfo {
 }
 ```
 
-TypeInfo 是一個 utility 類別，給定一個 GraphQL schema，藉由呼叫 `enter(node)` 以及 `leave(node)` 通過遞迴方式，可以在任何 GraphQL 文件 AST 的節點持續追蹤目前欄位和型別定義。
+TypeInfo 是一個 utility 類別，給定一個 GraphQL schema，藉由在遞迴分支時呼叫 `enter(node)` 以及 `leave(node)`，可以在任何 GraphQL 文件 AST 的節點持續追蹤目前欄位和型別定義。
 
 ## 值驗證
 
@@ -206,6 +206,6 @@ function isValidLiteralValue(
 ): string[]
 ```
 
-Utility 用於驗證 AST 的文字值是否是有效的給定輸入型別。
+用於判斷給定的字面值 AST 是否是有效的輸入型別的驗證器的 utility。
 
-注意，這只驗證文字值，變數被假設都提供正確型別的值。
+注意，這只驗證字面值，它假設變數都會提供正確型別的值。
