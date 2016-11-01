@@ -6,18 +6,11 @@ permalink: /docs/queries/
 next: /docs/validation/
 ---
 
-GraphQL queries declaratively describe what data the issuer wishes
-to fetch from whoever is fulfilling the GraphQL query.
+GraphQL 查詢是宣告描述發行人希望那些資料可以從被滿足的 GraphQL 查詢中取得。
 
-For our Star Wars example, the
-[starWarsQuery-test.js](https://github.com/graphql/graphql-js/blob/master/src/__tests__/starWarsQuery-test.js)
-file in the GraphQL.js repository contains a number of queries and responses.
-That file is a test file that uses the schema discussed in the "Type System" walkthrough and a set of
-sample data, located in
-[starWarsData.js](https://github.com/graphql/graphql-js/blob/master/src/__tests__/starWarsData.js).
-This test file can be run to exercise the reference implementation.
+在我們的 Star Wars 範例中，在 GraphQL.js repository 的 [starWarsQuery-test.js](https://github.com/graphql/graphql-js/blob/master/src/__tests__/starWarsQuery-test.js) 檔案包含一些查詢和 response。這個檔案位於 [starWarsData.js](https://github.com/graphql/graphql-js/blob/master/src/__tests__/starWarsData.js) 是一個測試檔案，在「類型系統」使用 schema 逐步審查和一組樣本資料。這個測試檔案可以執行應用參考實現。
 
-An example query on this schema would be:
+這個 schema 範例查詢會是：
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -31,15 +24,9 @@ query HeroNameQuery {
 `} />);
 </script>
 
-The initial line, `query HeroNameQuery`, defines a query with the operation
-name `HeroNameQuery` that starts with the schema's root query type; in this
-case, `Query`. As defined above, `Query` has a `hero` field that returns a
-`Character`, so we'll query for that. `Character` then has a `name` field that
-returns a `String`, so we query for that, completing our query.
+在初始化 `query HeroNameQuery`，定義一個查詢操作叫做 `HeroNameQuery`，在這個 `Query` 的情況下，啟動與 schema 的根查詢類型。根據上面的定義，`Query` 有一個 `hero` 欄位會回傳一個 `Character`，所以我們可以為此查詢。`Character` 有一個 `name` 欄位會回傳一個 `String`，所以我們可以完成我們的查詢。
 
-Specifying the `query` keyword and an operation name is only required when a
-GraphQL document defines multiple operations.  We therefore could have written
-the previous query with the query shorthand:
+當一個 GraphQL 文件定義多個操作時，指定 `query` keyword 和一個操作名稱是唯一被要求的。因此我們可以撰寫先前的查詢與簡寫的查詢方式：
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -53,9 +40,7 @@ the previous query with the query shorthand:
 `} />);
 </script>
 
-Assuming that the backing data for the GraphQL server identified R2-D2 as the
-hero. The response continues to vary based on the request; if we asked for
-R2-D2's ID and friends with this query then we'll get back a response like this:
+假設回傳給 GraphQL 伺服器的資料確認 R2-D2 作為英雄。response 依然取決於 request；如果我們在這個查詢請求 R2-D2 的 ID 和朋友，然後我們取得一個 response 會像是：
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -74,11 +59,7 @@ R2-D2's ID and friends with this query then we'll get back a response like this:
 `} />);
 </script>
 
-One of the key aspects of GraphQL is its ability to nest queries. In the
-above query, we asked for R2-D2's friends, but we can ask for more information
-about each of those objects. So let's construct a query that asks for R2-D2's
-friends, gets their name and episode appearances, then asks for each of *their*
-friends, resulting in a nested response.
+GraphQL 其中一個關鍵點就是它有能力接受巢狀的查詢。在上方的查詢我們請求 R2-D2 的朋友，但我們可以請求關於每個物件更詳細的資訊。所以讓我們建構一個查詢請求 R2-D2 的朋友，取得他們的名稱和出現的章節，然後請求*他們*每位的朋友，請求結果會在巢狀的 response 中。
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -99,8 +80,7 @@ friends, resulting in a nested response.
 `} />);
 </script>
 
-The `Query` type defined a way to fetch a human given their
-ID. We can use it by hardcoding the ID in the query:
+`Query` 類型定義一種方式來取得一個 human 給定他們的 ID。我們可以透過使用 hardcoding 來查詢 ID：
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -114,7 +94,7 @@ ID. We can use it by hardcoding the ID in the query:
 `} />);
 </script>
 
-Alternately, we could have defined the query to have a query parameter:
+另外，我們可以定義查詢所需要的查詢參數：
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -128,19 +108,11 @@ query FetchSomeIDQuery($someId: String!) {
 `} values={{someId: `1000`}} />);
 </script>
 
-This query is now parameterized by `$someId`; to run it, we must provide
-that ID. If we ran it with `$someId` provided as "1000", we would get Luke;
-provided as "1002", we would get Han. If we passed an invalid ID here,
-we would get `null` back for the `human`, indicating that no such object
-exists. If we don't provide `$someId` at all, an error is returned. In the above
-example, we ran the query with `$someId` set to "1000".
+這個查詢現在透過被參數化的 `$someId`；如果要執行，我們必須提供ID。如果們執行以 `$someId` 作為「1000」執行它，我們可以取得 Luke；提供「1002」，我們可以取得 Han。如果我們在這裡傳送一個無效的 ID，我們會取得 `null` 給 `human`，說明沒有這個物件的存在。如果我們沒有提供 `$someId` 的話，會回傳一個錯誤。在上面的範例，我們設定 `$someId` 為 「1000」執行查詢。
 
-Notice that the key in the response is the name of the field, by default.
-It is sometimes useful to change this key, for clarity or to avoid key
-collisions when fetching the same field with different arguments.
+預設上，注意在 response 的欄位名稱的 key。有時候改變這個 key 是相當有用的，當取得帶有不同參數的相同欄位可以更清楚或避免 key 的碰撞。
 
-We can do that with field aliases, as demonstrated in the following query where
-we aliased the result of the `human` field to the key `luke`:
+我們可以做欄位的別名，像是以下的查詢範例：我們將 `human` 欄位的結果別名到 `luke` 這個 key。
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -154,12 +126,9 @@ we aliased the result of the `human` field to the key `luke`:
 `} />);
 </script>
 
-Notice the key in the response is "luke" and not "human", as it was in our
-previous example where we did not use the alias.
+注意在 response 中的 key 是「luke」而不是「human」，是在我們先前的範例，在這裡我們沒有使用別名。
 
-This is particularly useful if we want to use the same field twice
-with different arguments, as in the following query where we alias the result of
-the first `human` field to the key `luke`, and the second to `leia`:
+如果我們想要在相同欄位而且兩次都使用不同參數，這是非常有用的，在下面的查詢我們第一個 key 是 `luke` 而欄位是 `human`，第二個 key 則是 `leia`：
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -176,8 +145,7 @@ the first `human` field to the key `luke`, and the second to `leia`:
 `} />);
 </script>
 
-Now imagine we wanted to ask for Luke and Leia's home planets. We could do so
-with this query:
+現在想像我們想要請求 Luke 和 Leia 的家鄉星球。我們可以這麼查詢：
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -196,9 +164,7 @@ with this query:
 `} />);
 </script>
 
-but we can already see that this could get unwieldy, since we have to add new
-fields to both parts of the query. Instead, we can extract out the common fields
-into a fragment, and include the fragment in the query, to get the same result.
+一旦我們新增欄位到這兩個部份的查詢，我們可以看到這可能已經變得難以處理。相反的，我們可以提取共同的欄位到一個 fragment，並在 fragment include fragment，來取得相同的結果。
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -220,14 +186,9 @@ fragment HumanFragment on Human {
 `} />);
 </script>
 
-The two previous queries will both get the same result, but using fragments was
-less verbose or fragile; if we wanted to add more fields, we could add
-it to the common fragment rather than copying it into multiple places.
+兩個先前的的查詢都取得相同的結果，但是使用 fragment 較不累贅或零碎；如果我們想要增加更多欄位，我們可以加入共同 fragment 而不是複製它到更多地方。
 
-We defined the type system above, so we know the type of each object
-in the output; the query can ask for that type using the special
-field `__typename`, defined on every object. Since R2-D2 is a droid, this will
-return `Droid`.
+我們在上面定義類型系統，所以我們知道在輸出的每個物件的類型；查詢可以請求該類型使用指定欄位 `__typename`，定義在每個物件。由於 R2-D2 是一個 droid，它將會回傳 `Droid`。
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -242,10 +203,7 @@ return `Droid`.
 `} />);
 </script>
 
-This was particularly useful because `hero` was defined to return a `Character`,
-which is an interface; we might want to know what concrete type was actually
-returned. If we instead asked for the hero of episode V we would find that it
-was Luke, who is a `Human`.
+這是相當有用的，因為 `hero` 被定義回傳一個 `Character`，它是一個 interface；我們或許想要知道實際回傳的具體類型。如果我們不是請求章節五的英雄我們可以找到 Luke，他是一個 `Human`。
 
 <script data-inline>
   import MiniGraphiQL from '../_core/MiniGraphiQL';
@@ -260,9 +218,4 @@ was Luke, who is a `Human`.
 `} />);
 </script>
 
-As with the type system, this example just scratched the surface of the query
-language. The specification goes into more detail about this topic in the
-"Language" section, and the
-[language](https://github.com/graphql/graphql-js/blob/master/src/language)
-directory in GraphQL.js contains code implementing a
-specification-compliant GraphQL query language parser and lexer.
+隨著類型系統，這個範例只是查詢語言的表面而已。進入更多有關本主題的「Language」部份的詳細規範，和在 GraphQL.js [language](https://github.com/graphql/graphql-js/blob/master/src/language) 目錄包含使用程式碼實作一個符合規範的 GraphQL 查詢語言 parser 和 lexer。
