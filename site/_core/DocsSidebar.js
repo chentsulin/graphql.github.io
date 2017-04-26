@@ -37,21 +37,10 @@ function SidebarForCategory({ pageID, category }) {
         </a>
         {page.sublinks && // Sublinks to any page sub-parts
           <ul>
-<<<<<<< HEAD
-            {category.links.map(page =>
-              <li key={page.permalink}>
-                <a
-                  target={page.url.match(/^https?:/) && '_blank'}
-                  style={{marginLeft: page.indent ? 20 : 0}}
-                  className={page.id === this.props.page.id ? 'active' : ''}
-                  href={'/graphql.github.io' + page.url}>
-                  {page.title}
-=======
             {page.sublinks.split(',').map(sublink =>
               <li key={sublink}>
-                <a target={target} rel={rel} href={page.url + '#' + toSlug(sublink)}>
+                <a target={target} rel={rel} href={'/graphql.github.io' + page.url + '#' + toSlug(sublink)}>
                   {sublink}
->>>>>>> upsteam/source
                 </a>
               </li>
             )}

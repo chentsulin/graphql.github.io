@@ -8,26 +8,13 @@
 
 var React = require('react');
 
-<<<<<<< HEAD
-var HeaderLinks = React.createClass({
-  linksInternal: [
-    {section: 'docs', text: 'Docs', href: '/graphql.github.io/docs/getting-started/' },
-    {section: 'blog', text: 'Blog', href: '/graphql.github.io/blog/' },
-    {section: 'help', text: 'Help', href: '/graphql.github.io/help/' },
-    {section: 'code', text: 'Code', href: '/graphql.github.io/code/' },
-  ],
-  linksExternal: [
-    {section: 'spec', text: 'Spec', href: 'http://facebook.github.io/graphql/' },
-  ],
-=======
 const links = [
-  { section: 'learn', text: 'Learn', href: '/learn/' },
-  { section: 'code', text: 'Code', href: '/code/' },
-  { section: 'community', text: 'Community', href: '/community/' },
-  { section: 'blog', text: 'Blog', href: '/blog/' },
+  { section: 'learn', text: 'Learn', href: '/graphql.github.io/learn/' },
+  { section: 'code', text: 'Code', href: '/graphql.github.io/code/' },
+  { section: 'community', text: 'Community', href: '/graphql.github.io/community/' },
+  { section: 'blog', text: 'Blog', href: '/graphql.github.io/blog/' },
   { section: 'spec', text: 'Spec', href: 'http://facebook.github.io/graphql/' },
 ];
->>>>>>> upsteam/source
 
 export default ({ section }) =>
   <nav>
