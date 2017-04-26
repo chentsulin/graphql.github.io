@@ -6,7 +6,11 @@
 
 var React = require('react');
 var Prism = require('./Prism');
-var Header = require('./Header');
+import Header from './Header';
+
+export default function Marked(props) {
+  return <div>{marked(props.children, props)}</div>;
+}
 
 /**
  * Block-Level Grammar
@@ -709,7 +713,8 @@ InlineLexer.prototype.outputLink = function(cap, link) {
     return React.DOM.a({
       href: this.sanitizeUrl(link.href),
       title: link.title,
-      target: shouldOpenInNewWindow ? '_blank' : ''
+      target: shouldOpenInNewWindow ? '_blank' : null,
+      rel: shouldOpenInNewWindow ? 'noopener noreferrer' : null
     }, this.output(cap[1]));
   } else {
     return React.DOM.img({
@@ -741,6 +746,7 @@ function Parser(options) {
   this.tokens = [];
   this.token = null;
   this.options = options || marked.defaults;
+  this.usedSlugs = {};
 }
 
 /**
@@ -812,13 +818,35 @@ Parser.prototype.tok = function() {
     }
     case 'heading': {
       return (
-        <Header url={this.options.url} level={this.token.depth} toSlug={this.token.text}>
+        <Header url={this.options.url} level={this.token.depth} toSlug={this.token.text} usedSlugs={this.usedSlugs}>
           {this.inline.output(this.token.text)}
         </Header>
       );
     }
     case 'code': {
-      return <Prism line={this.token.line}>{this.token.text}</Prism>;
+      if (this.token.lang === 'graphql') {
+        var lines = this.token.text.split('\n');
+        var firstLine = lines.shift().match(/^\s*#\s*({.*})$/);
+        if (firstLine) {
+          var metaData;
+          try {
+            metaData = JSON.parse(firstLine[1]);
+          } catch (e) {
+            console.error('Invalid Metadata JSON:', firstLine[1]);
+          }
+          if (metaData) {
+            var query = lines.join('\n');
+            var variables = metaData.variables ? JSON.stringify(metaData.variables, null, 2) : '';
+            return <script data-inline dangerouslySetInnerHTML={{__html: `
+              import MiniGraphiQL from '../_core/MiniGraphiQL';
+              import { StarWarsSchema } from '../_core/swapiSchema';
+              renderHere(<MiniGraphiQL schema={StarWarsSchema}
+              query={\`${query}\`} variables={\`${variables}\`} />);
+            `}} />
+          }
+        }
+      }
+      return <Prism language={this.token.lang} line={this.token.line}>{this.token.text}</Prism>;
     }
     case 'table': {
       var table = []
@@ -1084,11 +1112,3 @@ marked.InlineLexer = InlineLexer;
 marked.inlineLexer = InlineLexer.output;
 
 marked.parse = marked;
-
-var Marked = React.createClass({
-  render: function() {
-    return <div>{marked(this.props.children, this.props)}</div>;
-  }
-});
-
-module.exports = Marked;
