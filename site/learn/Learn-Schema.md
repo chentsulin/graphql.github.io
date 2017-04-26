@@ -2,8 +2,8 @@
 title: Schemas and Types
 layout: ../_core/DocsLayout
 category: Learn
-permalink: /learn/schema/
-next: /learn/validation/
+permalink: /graphql.github.io/learn/schema/
+next: /graphql.github.io/learn/validation/
 sublinks: Type System,Type Language,Object Types and Fields,Arguments,The Query and Mutation Types,Scalar Types,Enumeration Types,Lists and Non-Null,Interfaces,Union Types,Input Types
 ---
 
@@ -293,7 +293,7 @@ query HeroForEpisode($ep: Episode!) {
 }
 ```
 
-Learn more about this in the [inline fragments](/learn/queries/#inline-fragments) section in the query guide.
+Learn more about this in the [inline fragments](/graphql.github.io/learn/queries/#inline-fragments) section in the query guide.
 
 ### Union types
 

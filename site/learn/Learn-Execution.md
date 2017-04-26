@@ -2,8 +2,8 @@
 title: Execution
 layout: ../_core/DocsLayout
 category: Learn
-permalink: /learn/execution/
-next: /learn/introspection/
+permalink: /graphql.github.io/learn/execution/
+next: /graphql.github.io/learn/introspection/
 ---
 
 After being validated, a GraphQL query is executed by a GraphQL server which returns a result that mirrors the shape of the requested query, typically as JSON.

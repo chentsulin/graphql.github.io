@@ -2,8 +2,8 @@
 title: Pagination
 layout: ../_core/DocsLayout
 category: Best Practices
-permalink: /learn/pagination/
-next: /learn/caching/
+permalink: /graphql.github.io/learn/pagination/
+next: /graphql.github.io/learn/caching/
 ---
 
 > Different pagination models enable different client capabilities
@@ -134,4 +134,3 @@ To see this in action, there's an additional field in the example schema, called
   }
 }
 ```
-

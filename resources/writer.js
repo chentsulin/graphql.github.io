@@ -160,9 +160,9 @@ function writeScript(writePath, file, fileData) {
           resolve(
             withInitialRenders.replace(
               '</body></html>',
-              `<script src="/vendor/react-15.0.1.min.js"></script>` +
-              `<script src="/vendor/react-dom-15.0.1.min.js"></script>` +
-              `<script src="${path.basename(writePath)}.${stats.hash}.js"></script></body></html>`
+              `<script src="/graphql.github.io/vendor/react-15.0.1.min.js"></script>` +
+              `<script src="/graphql.github.io/vendor/react-dom-15.0.1.min.js"></script>` +
+              `<script src="/graphql.github.io${path.basename(writePath)}.${stats.hash}.js"></script></body></html>`
             )
           );
         });

@@ -2,8 +2,8 @@
 title: Queries and Mutations
 layout: ../_core/DocsLayout
 category: Learn
-permalink: /learn/queries/
-next: /learn/schema/
+permalink: /graphql.github.io/learn/queries/
+next: /graphql.github.io/learn/schema/
 sublinks: Fields,Arguments,Aliases,Fragments,Variables,Operation Name,Directives,Mutations,Inline Fragments
 ---
 
@@ -74,7 +74,7 @@ In a system like REST, you can only pass a single set of arguments - the query p
 
 Arguments can be of many different types. In the above example, we have used an Enumeration type, which represents one of a finite set of options (in this case, units of length, either `METER` or `FOOT`). GraphQL comes with a default set of types, but a GraphQL server can also declare its own custom types, as long as they can be serialized into your transport format.
 
-[Read more about the GraphQL type system here.](/learn/schema)
+[Read more about the GraphQL type system here.](/graphql.github.io/learn/schema)
 
 
 ## Aliases
@@ -167,7 +167,7 @@ To learn more about the syntax for these variable definitions, it's useful to le
 
 ### Default variables
 
-Default values can also be assigned to the variables in the query by adding the default value after the type declaration. 
+Default values can also be assigned to the variables in the query by adding the default value after the type declaration.
 
 ```graphql
 query HeroNameAndFriends($episode: Episode = "JEDI") {
@@ -180,7 +180,7 @@ query HeroNameAndFriends($episode: Episode = "JEDI") {
 }
 ```
 
-When default values are provided for all variables, you can call the query without passing any variables. If any variables are passed as part of the variables dictionary, they will override the defaults. 
+When default values are provided for all variables, you can call the query without passing any variables. If any variables are passed as part of the variables dictionary, they will override the defaults.
 
 ## Operation name
 
@@ -250,7 +250,7 @@ This means that if we send two `incrementCredits` mutations in one request, the 
 
 ## Inline Fragments
 
-Like many other type systems, GraphQL schemas include the ability to define interfaces and union types. [Learn about them in the schema guide.](/learn/schema/#interfaces)
+Like many other type systems, GraphQL schemas include the ability to define interfaces and union types. [Learn about them in the schema guide.](/graphql.github.io/learn/schema/#interfaces)
 
 If you are querying a field that returns an interface or a union type, you will need to use *inline fragments* to access data on the underlying concrete type. It's easiest to see with an example:
 
@@ -301,4 +301,3 @@ Given that there are some situations where you don't know what type you'll get b
 In the above query, `search` returns a union type that can be one of three options. It would be impossible to tell apart the different types from the client without the `__typename` field.
 
 GraphQL services provide a few meta fields, the rest of which are used to expose the [Introspection](../introspection/) system.
-

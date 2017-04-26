@@ -2,8 +2,8 @@
 title: Introspection
 layout: ../_core/DocsLayout
 category: Learn
-permalink: /learn/introspection/
-next: /learn/best-practices/
+permalink: /graphql.github.io/learn/introspection/
+next: /graphql.github.io/learn/best-practices/
 ---
 
 It's often useful to ask a GraphQL schema for information about what

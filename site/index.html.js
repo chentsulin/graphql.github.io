@@ -61,10 +61,10 @@ module.exports = ({ page, section }) =>
         </section>
 
         <div className="buttons-unit">
-          <a className="button" href="/code/">
+          <a className="button" href="/graphql.github.io/code/">
             Get Started
           </a>
-          <a className="button" href="/learn/">
+          <a className="button" href="/graphql.github.io/learn/">
             Learn More
           </a>
         </div>

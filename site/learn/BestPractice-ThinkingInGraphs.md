@@ -2,8 +2,8 @@
 title: Thinking in Graphs
 layout: ../_core/DocsLayout
 category: Best Practices
-permalink: /learn/thinking-in-graphs/
-next: /learn/serving-over-http/
+permalink: /graphql.github.io/learn/thinking-in-graphs/
+next: /graphql.github.io/learn/serving-over-http/
 ---
 
 ## It's Graphs All the Way Down [\*](https://en.wikipedia.org/wiki/Turtles_all_the_way_down)

@@ -2,8 +2,8 @@
 title: Serving over HTTP
 layout: ../_core/DocsLayout
 category: Best Practices
-permalink: /learn/serving-over-http/
-next: /learn/authorization/
+permalink: /graphql.github.io/learn/serving-over-http/
+next: /graphql.github.io/learn/authorization/
 ---
 
 HTTP is the most common choice for client-server protocol when using GraphQL because of its ubiquity. Here are some guidelines for setting up a GraphQL server to operate over HTTP.

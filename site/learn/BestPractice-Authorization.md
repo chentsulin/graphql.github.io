@@ -2,8 +2,8 @@
 title: Authorization
 layout: ../_core/DocsLayout
 category: Best Practices
-permalink: /learn/authorization/
-next: /learn/pagination/
+permalink: /graphql.github.io/learn/authorization/
+next: /graphql.github.io/learn/pagination/
 ---
 
 > Delegate authorization logic to the business logic layer
@@ -12,7 +12,7 @@ Authorization is a type of business logic that describes whether a given user/se
 
 *“Only authors can see their drafts”*
 
-Enforcing this kind of behavior should happen in the [business logic layer](/learn/thinking-in-graphs/#business-logic-layer). It is tempting to place authorization logic in the GraphQL layer like so:
+Enforcing this kind of behavior should happen in the [business logic layer](/graphql.github.io/learn/thinking-in-graphs/#business-logic-layer). It is tempting to place authorization logic in the GraphQL layer like so:
 
 ```javascript
 var postType = new GraphQLObjectType({
@@ -32,7 +32,7 @@ var postType = new GraphQLObjectType({
 });
 ```
 
-Notice that we define “author owns a post" by checking whether the post's `authorId` field equals the current user’s `id`. Can you spot the problem? We would need to duplicate this code for each entry point into the service. Then if the authorization logic is not kept perfectly in sync, users could see different data depending on which API they use. Yikes! We can avoid that by having a [single source of truth](/learn/thinking-in-graphs/#business-logic-layer) for authorization.
+Notice that we define “author owns a post" by checking whether the post's `authorId` field equals the current user’s `id`. Can you spot the problem? We would need to duplicate this code for each entry point into the service. Then if the authorization logic is not kept perfectly in sync, users could see different data depending on which API they use. Yikes! We can avoid that by having a [single source of truth](/graphql.github.io/learn/thinking-in-graphs/#business-logic-layer) for authorization.
 
 Defining authorization logic inside the resolver is fine when learning GraphQL or prototyping. However, for a production codebase, delegate authorization logic to the business logic layer. Here’s an example:
 
