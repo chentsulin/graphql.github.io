@@ -32,7 +32,7 @@ function SidebarForCategory({ pageID, category }) {
           rel={rel}
           style={{ marginLeft: page.indent ? 20 : 0 }}
           className={page.id === pageID ? 'active' : null}
-          href={page.url}>
+          href={'/graphql.github.io' + page.url}>
           {page.sidebarTitle || page.title}
         </a>
         {page.sublinks && // Sublinks to any page sub-parts

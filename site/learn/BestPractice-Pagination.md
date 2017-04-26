@@ -2,8 +2,8 @@
 title: Pagination
 layout: ../_core/DocsLayout
 category: Best Practices
-permalink: /graphql.github.io/learn/pagination/
-next: /graphql.github.io/learn/caching/
+permalink: /learn/pagination/
+next: /learn/caching/
 ---
 
 > Different pagination models enable different client capabilities

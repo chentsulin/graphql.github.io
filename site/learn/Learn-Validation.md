@@ -2,8 +2,8 @@
 title: Validation
 layout: ../_core/DocsLayout
 category: Learn
-permalink: /graphql.github.io/learn/validation/
-next: /graphql.github.io/learn/execution/
+permalink: /learn/validation/
+next: /learn/execution/
 ---
 
 By using the type system, it can be predetermined whether a GraphQL query

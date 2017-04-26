@@ -3,8 +3,8 @@ title: GraphQL Best Practices
 sidebarTitle: Introduction
 layout: ../_core/DocsLayout
 category: Best Practices
-permalink: /graphql.github.io/learn/best-practices/
-next: /graphql.github.io/learn/thinking-in-graphs/
+permalink: /learn/best-practices/
+next: /learn/thinking-in-graphs/
 ---
 
 The GraphQL specification is intentionally silent on a handful of important issues facing APIs such as dealing with the network, authorization, and pagination. This doesn't mean that there aren't solutions for these issues when using GraphQL, just that they're outside the description about what GraphQL *is* and instead just common practice.

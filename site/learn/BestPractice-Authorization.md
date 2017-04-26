@@ -2,8 +2,8 @@
 title: Authorization
 layout: ../_core/DocsLayout
 category: Best Practices
-permalink: /graphql.github.io/learn/authorization/
-next: /graphql.github.io/learn/pagination/
+permalink: /learn/authorization/
+next: /learn/pagination/
 ---
 
 > Delegate authorization logic to the business logic layer

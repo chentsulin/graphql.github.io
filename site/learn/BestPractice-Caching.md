@@ -2,7 +2,7 @@
 title: Caching
 layout: ../_core/DocsLayout
 category: Best Practices
-permalink: /graphql.github.io/learn/caching/
+permalink: /learn/caching/
 ---
 
 > Providing Object Identifiers allows clients to build rich caches

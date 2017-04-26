@@ -2,8 +2,8 @@
 title: Schemas and Types
 layout: ../_core/DocsLayout
 category: Learn
-permalink: /graphql.github.io/learn/schema/
-next: /graphql.github.io/learn/validation/
+permalink: /learn/schema/
+next: /learn/validation/
 sublinks: Type System,Type Language,Object Types and Fields,Arguments,The Query and Mutation Types,Scalar Types,Enumeration Types,Lists and Non-Null,Interfaces,Union Types,Input Types
 ---
 

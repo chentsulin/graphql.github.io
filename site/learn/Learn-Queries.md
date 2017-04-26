@@ -2,8 +2,8 @@
 title: Queries and Mutations
 layout: ../_core/DocsLayout
 category: Learn
-permalink: /graphql.github.io/learn/queries/
-next: /graphql.github.io/learn/schema/
+permalink: /learn/queries/
+next: /learn/schema/
 sublinks: Fields,Arguments,Aliases,Fragments,Variables,Operation Name,Directives,Mutations,Inline Fragments
 ---
 

@@ -3,8 +3,8 @@ title: Introduction to GraphQL
 sidebarTitle: Introduction
 layout: ../_core/DocsLayout
 category: Learn
-permalink: /graphql.github.io/learn/
-next: /graphql.github.io/learn/queries/
+permalink: /learn/
+next: /learn/queries/
 ---
 
 > Learn about GraphQL, how it works, and how to use it in this series of articles. Looking for documentation on how to build a GraphQL service? There are libraries to help you implement GraphQL in [many different languages](/code/).
