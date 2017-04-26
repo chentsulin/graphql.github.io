@@ -7,12 +7,7 @@ sublinks: astFromValue,buildASTSchema,buildClientSchema,buildSchema,introspectio
 next: /graphql-js/validation/
 ---
 
-<<<<<<< HEAD:site/docs/APIReference-Utilities.md
-`graphql/utilities` module 包含一些常見且有用的運算可以伴隨著 GraphQL 語言與型別物件一起使用。
-=======
-The `graphql/utilities` module contains common useful computations to use with
-the GraphQL language and type objects. You can import either from the `graphql/utilities` module, or from the root `graphql` module. For example:
->>>>>>> upsteam/source:site/graphql-js/APIReference-Utilities.md
+`graphql/utilities` 模組包含一些常見且有用的運算，可以伴隨著 GraphQL 語言與型別物件一起使用。你可以從 `graphql/utilities` 模組載入，或是從 root `graphql` 模組載入。例如：
 
 ```js
 import { introspectionQuery } from 'graphql'; // ES6
@@ -127,15 +122,7 @@ function buildClientSchema(
 
 透過客戶端工具產生一個 GraphQLSchema 來使用。
 
-<<<<<<< HEAD:site/docs/APIReference-Utilities.md
-給定客戶端執行 introspection 查詢的結果，建立並回傳一個 GraphQLSchema 實體，然後就可以用於所有的 graphql-js 工具，但不能用於執行查詢，因為 introspection 並沒有呈現「resolver」、「parse」或「serialize」function 以及其他任何伺服器內部的機制。
-=======
-Given the result of a client running the introspection query, creates and
-returns a GraphQLSchema instance which can be then used with all GraphQL.js
-tools, but cannot be used to execute a query, as introspection does not
-represent the "resolver", "parse" or "serialize" functions or any other
-server-internal mechanisms.
->>>>>>> upsteam/source:site/graphql-js/APIReference-Utilities.md
+給定客戶端執行 introspection 查詢的結果，建立並回傳一個 GraphQLSchema 實體，然後就可以用於所有的 GraphQL.js 工具，但不能用於執行查詢，因為 introspection 並沒有呈現「resolver」、「parse」或「serialize」function 以及其他任何伺服器內部的機制。
 
 ## 呈現 Schema
 
@@ -173,15 +160,7 @@ function buildASTSchema(
 ): GraphQLSchema
 ```
 
-<<<<<<< HEAD:site/docs/APIReference-Utilities.md
-這接收由 `graphql/language/schema` 中的 `parseSchemaIntoAST` 產生的 Schema 文件的 ast 並建構一個 GraphQLSchema 實體，它可以用於所有的 graphql-js 工具，但不能被用來執行查詢，因為 introspection 沒有呈現「resolver」、「parse」或「serialize」function 以及其他任何伺服器內部的機制。
-=======
-This takes the ast of a schema document produced by `parseSchemaIntoAST` in
-`graphql/language/schema` and constructs a GraphQLSchema instance which can be
-then used with all GraphQL.js tools, but cannot be used to execute a query, as
-introspection does not represent the "resolver", "parse" or "serialize"
-functions or any other server-internal mechanisms.
->>>>>>> upsteam/source:site/graphql-js/APIReference-Utilities.md
+這接收由 `graphql/language/schema` 中的 `parseSchemaIntoAST` 產生的 Schema 文件的 ast 並建構一個 GraphQLSchema 實體，它可以用於所有的 GraphQL.js 工具，但不能被用來執行查詢，因為 introspection 沒有呈現「resolver」、「parse」或「serialize」function 以及其他任何伺服器內部的機制。
 
 ### typeFromAST
 

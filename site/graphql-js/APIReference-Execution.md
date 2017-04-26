@@ -7,12 +7,8 @@ sublinks: execute
 next: /graphql-js/language/
 ---
 
-<<<<<<< HEAD:site/docs/APIReference-Execution.md
-`graphql/execution` module 負責滿足 GraphQL 請求的執行階段。
-=======
-The `graphql/execution` module is responsible for the execution phase of
-fulfilling a GraphQL request. You can import either from the `graphql/execution` module, or from the root `graphql` module. For example:
->>>>>>> upsteam/source:site/graphql-js/APIReference-Execution.md
+`graphql/execution` 模組負責實現
+GraphQL 請求的執行階段。你可以從 `graphql/execution` 模組載入，或是從 root `graphql` 模組載入。例如：
 
 ```js
 import { execute } from 'graphql'; // ES6

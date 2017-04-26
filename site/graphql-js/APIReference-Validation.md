@@ -6,12 +6,7 @@ permalink: /graphql-js/validation/
 sublinks: specifiedRules,validate
 ---
 
-<<<<<<< HEAD:site/docs/APIReference-Validation.md
-`graphql/validation` module 實踐滿足一個 GraphQL 結果的驗證階段。
-=======
-The `graphql/validation` module fulfills the Validation phase of fulfilling a
-GraphQL result. You can import either from the `graphql/validation` module, or from the root `graphql` module. For example:
->>>>>>> upsteam/source:site/graphql-js/APIReference-Validation.md
+`graphql/validation` 模組完成了獲取 GraphQL 結果的驗證階段。你可以從 `graphql/validation` 模組載入，或是從 root `graphql` 模組載入。例如：
 
 ```js
 import { validate } from 'graphql/validation'; // ES6

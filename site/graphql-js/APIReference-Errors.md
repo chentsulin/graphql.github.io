@@ -7,12 +7,8 @@ sublinks: formatError,GraphQLError,locatedError,syntaxError
 next: /graphql-js/execution/
 ---
 
-<<<<<<< HEAD:site/docs/APIReference-Errors.md
-`graphql/error` module 負責建立和格式化 GraphQL 錯誤。
-=======
-The `graphql/error` module is responsible for creating and formatting
-GraphQL errors. You can import either from the `graphql/error` module, or from the root `graphql` module. For example:
->>>>>>> upsteam/source:site/graphql-js/APIReference-Errors.md
+`graphql/error` 模組負責建立和格式化
+GraphQL 錯誤。你可以從 `graphql/error` 模組載入，或是從 root `graphql` 模組載入。例如：
 
 ```js
 import { GraphQLError } from 'graphql'; // ES6
