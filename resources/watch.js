@@ -51,14 +51,58 @@ function startWatch() {
   console.log('watching...');
 }
 
-function deleteFile(fileName) {
-  delete require.cache[fileName];
-  build().catch(error => console.error(error.stack || error));
+function changeFile(fileName) {
+  enqueue(fileName);
 }
 
-function changeFile(fileName) {
-  delete require.cache[fileName];
-  build().catch(error => console.error(error.stack || error));
+function deleteFile(fileName) {
+  enqueue(fileName);
+}
+
+const queue = [];
+
+function enqueue(fileName) {
+  queue.push(fileName);
+  if (queue.length === 1) {
+    rebuild();
+  } else {
+    console.log('queue', fileName);
+  }
+}
+
+function rebuild() {
+  const fileName = queue[0];
+  const filter =
+    /_core\//.test(fileName) ? /\.(js|md)$/ :
+    /\.less$/.test(fileName) ? /\.less$/ :
+    fileName ? SITE_ROOT + '/' + fileName :
+    null;
+  clearCache(fileName);
+  return build(filter).then(
+    () => {
+      queue.shift();
+      if (queue.length) {
+        return rebuild();
+      }
+    },
+    error => {
+      console.error(error.stack || error);
+      queue.shift();
+      if (queue.length) {
+        return rebuild();
+      }
+    }
+  );
+}
+
+function clearCache(causeFileName) {
+  if (path.extname(causeFileName) === '.js') {
+    for (var fileName in require.cache) {
+      if (fileName.indexOf('/node_modules/') === -1) {
+        delete require.cache[fileName];
+      }
+    }
+  }
 }
 
 if (require.main === module) {

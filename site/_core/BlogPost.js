@@ -9,6 +9,7 @@
 var React = require('react');
 var Marked = require('./Marked');
 
+<<<<<<< HEAD
 var BlogPost = React.createClass({
   render: function() {
     var post = this.props.post;
@@ -28,3 +29,15 @@ var BlogPost = React.createClass({
 });
 
 module.exports = BlogPost;
+=======
+module.exports = ({ post, isPermalink }) =>
+  <div className="inner-content">
+    <h1>{isPermalink ? post.title : <a href={post.url}>{post.title}</a>}</h1>
+    <p>{new Date(post.date).toLocaleDateString()} by {post.byline}</p>
+    {post.guestBio ? null : <hr />}
+    {post.guestBio && <p className="guestBio">{
+      `This guest article contributed by ${post.byline}, ${post.guestBio}.`
+    }</p>}
+    <Marked>{post.content}</Marked>
+  </div>
+>>>>>>> upsteam/source
